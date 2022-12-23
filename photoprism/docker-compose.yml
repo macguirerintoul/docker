@@ -1,0 +1,42 @@
+---
+version: "3"
+
+services:
+  photoprism:
+    container_name: photoprism
+    image: photoprism/photoprism
+    restart: unless-stopped
+    ports:
+      - 9150:2342
+    environment:
+      - PHOTOPRISM_PUBLIC=false
+      - PHOTOPRISM_UPLOAD_NSFW=true
+      - PHOTOPRISM_DETECT_NSFW=false
+      - PHOTOPRISM_EXPERIMENTAL=false
+      - PHOTOPRISM_ADMIN_PASSWORD=dimorphism
+      - PHOTOPRISM_DATABASE_DRIVER=mysql
+      - PHOTOPRISM_DATABASE_DSN=photoprism:dimorphism@tcp(192.168.0.20:3306)/photoprism?charset=utf8mb4,utf8&parseTime=true
+      - PHOTOPRISM_STORAGE_PATH=/photoprism/storage
+      - PHOTOPRISM_DISABLE_CHOWN=true
+      - PHOTOPRISM_UID=1000
+      - PHOTOPRISM_GID=1000
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./storage:/photoprism/storage
+      - ./originals:/photoprism/originals
+      - ./import:/photoprism/import
+  photoprism-db:
+    container_name: photoprism-db
+    image: mariadb
+    command: mysqld --transaction-isolation=READ-COMMITTED --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=512 --innodb-rollback-on-timeout=OFF --innodb-lock-wait-timeout=50
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysequelrootpasswordtestingtesting123
+      - MYSQL_PASSWORD=whydoesnextcloudnotwork
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud

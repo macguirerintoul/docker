@@ -1,0 +1,17 @@
+version: "3"
+services:
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los Angeles
+      - UMASK_SET=022 #optional
+    volumes:
+      - ./config:/config
+      - ../data/movies:/movies
+      - ../data/downloads:/downloads
+    ports:
+      - 9032:7878
+    restart: unless-stopped
