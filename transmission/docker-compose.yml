@@ -1,0 +1,15 @@
+transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./config:/config
+      - ../data/downloads:/downloads
+      - ../data/transmission/watch:/watch
+    ports:
+      - 9040:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
