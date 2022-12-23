@@ -1,0 +1,16 @@
+version: "3"
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - PLEX_CLAIM=claim-AQ8nYLypoZfsE6hHwr_3
+      - ADVERTISE_IP=http://70.68.79.16:32400
+    volumes:
+      - ./config:/config
+      - ./transcode:/transcode
+      - ../data/tv:/data/tv
+      - ../data/movies:/data/movies
+      - ../data/music:/data/music
