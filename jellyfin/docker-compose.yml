@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+    jellyfin:
+        volumes:
+            - './config:/config'
+            - './cache:/cache'
+            - '../data/tv:/media/tv'
+            - '../data/movies:/media/movies'
+        network_mode: host
+        image: 'jellyfin/jellyfin:latest'
