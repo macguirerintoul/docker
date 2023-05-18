@@ -13,9 +13,12 @@ jobs:
       # need checkout before using compose-action
       - uses: actions/checkout@v3
       - run: |
+          cd adguardhome
+          docker-compose pull
           sudo systemctl disable systemd-resolved.service
           sudo systemctl stop systemd-resolved
+          docker-compose up -d
       - uses: isbang/compose-action@v1.4.1
         with:
           compose-file: |
-            adguardhome/docker-compose.yml
+            bazarr/docker-compose.yml
