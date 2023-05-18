@@ -10,18 +10,19 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+      # need checkout before using compose-action
       - uses: actions/checkout@v3
+      # - run: |
+      #     cd adguardhome
+      #     docker-compose pull
+      #     sudo systemctl disable systemd-resolved.service
+      #     sudo systemctl stop systemd-resolved
+      #     docker-compose up -d
+      #     docker-compose down
+      #     sudo systemctl enable systemd-resolved.service
+      #     sudo systemctl start systemd-resolved
       - run: |
-          cd adguardhome
-          docker-compose pull
-          sudo systemctl disable systemd-resolved.service
-          sudo systemctl stop systemd-resolved
-          docker-compose up -d
-          docker-compose down
-          sudo systemctl enable systemd-resolved.service
-          sudo systemctl start systemd-resolved
-      - run: |
-          docker compose -f bazarr/docker-compose.yml up -d
+          docker-compose -f bazarr/docker-compose.yml up -d
           docker-compose -f code-server/docker-compose.yml up -d
           docker-compose -f czkawka/docker-compose.yml up -d
           docker-compose -f dozzle/docker-compose.yml up -d

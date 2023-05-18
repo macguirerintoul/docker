@@ -7,9 +7,9 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ./config:/config
-      - ../data/movies:/movies
-      - ../data/tv:/tv
+      - /var/containers/bazarr/config:/config
+      - /var/containers/media/movies:/movies
+      - /var/containers/media/tv:/tv
     ports:
       - 3002:6767
     restart: unless-stopped

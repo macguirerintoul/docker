@@ -5,6 +5,6 @@ services:
     environment:
       - TZ=America/Vancouver
     volumes:
-      - "/mnt/containers/homeassistant/config:/config"
+      - /var/containers/homeassistant/config:/config
     network_mode: host
     image: "ghcr.io/home-assistant/home-assistant:stable"
