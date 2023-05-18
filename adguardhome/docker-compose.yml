@@ -12,3 +12,5 @@ services:
     volumes:
       - adguardhome:/opt/adguardhome
     restart: unless-stopped
+volumes:
+  adguardhome:
