@@ -1,16 +1,16 @@
-version: "3"
 services:
   adguardhome:
     image: adguard/adguardhome
     container_name: adguardhome
     ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 784:784/udp
-      - 853:853/tcp
-      - 3001:3000/tcp
+      - 53:53 # dns
+      - 784:784/udp # dns-over-quic
+      - 853:853 # dns-over-tls/quic
+      - 3000:3000/tcp # web ui
+      - 3001:80 # web ui
+      - 3002:443 # web ui
+      - 8853:8853/udp # dns-over-quic
     volumes:
-      - adguardhome:/opt/adguardhome
+      - /mnt/containers/adguardhome/data:/opt/adguardhome/work
+      - /mnt/containers/adguardhome/config:/opt/adguardhome/config
     restart: unless-stopped
-volumes:
-  adguardhome:
