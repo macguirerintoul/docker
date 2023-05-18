@@ -3,7 +3,7 @@ services:
     image: adguard/adguardhome # image has no tags
     container_name: adguardhome
     ports:
-      - "53:53" # dns
+      - 53:53 # dns
       - 784:784/udp # dns-over-quic
       - 853:853 # dns-over-tls/quic
       - 3000:3000/tcp # web ui

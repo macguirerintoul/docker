@@ -21,7 +21,17 @@ jobs:
           docker-compose down
           sudo systemctl enable systemd-resolved.service
           sudo systemctl start systemd-resolved
+      - run: |
+          docker-compose -d -f bazarr/docker-compose.yml
+          docker-compose -d -f code-server/docker-compose.yml
+          docker-compose -d -f czkawka/docker-compose.yml
+          docker-compose -d -f dozzle/docker-compose.yml
+          docker-compose -d -f homeassistant/docker-compose.yml
       - uses: isbang/compose-action@v1.4.1
         with:
           compose-file: |
             bazarr/docker-compose.yml
+            code-server/docker-compose.yml
+            czkawka/docker-compose.yml
+            dozzle/docker-compose.yml
+            homeassistant/docker-compose.yml
