@@ -12,7 +12,9 @@ jobs:
     steps:
       # need checkout before using compose-action
       - uses: actions/checkout@v3
-      - run: sudo ss -tulw | grep 53
+      - run: |
+          sudo systemctl disable systemd-resolved.service
+          sudo systemctl stop systemd-resolved
       - uses: isbang/compose-action@v1.4.1
         with:
           compose-file: |
