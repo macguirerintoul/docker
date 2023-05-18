@@ -1,6 +1,6 @@
 services:
   adguardhome:
-    image: adguard/adguardhome
+    image: adguard/adguardhome # image has no tags
     container_name: adguardhome
     ports:
       - 53:53 # dns
