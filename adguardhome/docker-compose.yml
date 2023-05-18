@@ -4,12 +4,14 @@ services:
     image: adguard/adguardhome # image has no tags
     container_name: adguardhome
     ports:
-      - 53:53 # dns
+      - 53:53/tcp # dns
+      - 53:53/udp # dns
       - 784:784/udp # dns-over-quic
-      - 853:853 # dns-over-tls/quic
+      - 853:853/tcp # dns-over-tls/quic
       - 3000:3000/tcp # web ui
-      - 3001:80 # web ui
-      - 3002:443 # web ui
+      - 3001:80/tcp # web ui
+      - 3002:443/tcp # web ui
+      - 3002:443/udp # web ui
       - 8853:8853/udp # dns-over-quic
     volumes:
       - /var/containers/adguardhome/data:/opt/adguardhome/work
