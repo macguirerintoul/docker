@@ -10,7 +10,6 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      # need checkout before using compose-action
       - uses: actions/checkout@v3
       - run: |
           cd adguardhome
@@ -27,11 +26,3 @@ jobs:
           docker-compose -f czkawka/docker-compose.yml up -d
           docker-compose -f dozzle/docker-compose.yml up -d
           docker-compose -f homeassistant/docker-compose.yml up -d
-      - uses: isbang/compose-action@v1.4.1
-        with:
-          compose-file: |
-            bazarr/docker-compose.yml
-            code-server/docker-compose.yml
-            czkawka/docker-compose.yml
-            dozzle/docker-compose.yml
-            homeassistant/docker-compose.yml
