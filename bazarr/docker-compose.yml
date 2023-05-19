@@ -10,5 +10,5 @@ services:
       - /mnt/containers/media/movies:/movies
       - /mnt/containers/media/tv:/tv
     ports:
-      - 3002:6767
+      - 3003:6767
     restart: unless-stopped
