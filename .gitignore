@@ -5,3 +5,4 @@ config
 borg-logs
 cache
 transcode
+.env

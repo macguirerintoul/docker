@@ -1,4 +1,3 @@
-version: "3"
 services:
   adguardhome:
     image: adguard/adguardhome # image has no tags
@@ -14,6 +13,6 @@ services:
       - 3002:443/udp # web ui
       - 8853:8853/udp # dns-over-quic
     volumes:
-      - /var/containers/adguardhome/data:/opt/adguardhome/work
-      - /var/containers/adguardhome/config:/opt/adguardhome/conf
+      - /mnt/containers/adguardhome/data:/opt/adguardhome/work
+      - /mnt/containers/adguardhome/config:/opt/adguardhome/conf
     restart: unless-stopped

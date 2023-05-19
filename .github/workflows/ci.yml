@@ -8,19 +8,19 @@ on:
       - main
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-      # need checkout before using compose-action
       - uses: actions/checkout@v3
-      # - run: |
-      #     cd adguardhome
-      #     docker-compose pull
-      #     sudo systemctl disable systemd-resolved.service
-      #     sudo systemctl stop systemd-resolved
-      #     docker-compose up -d
-      #     docker-compose down
-      #     sudo systemctl enable systemd-resolved.service
-      #     sudo systemctl start systemd-resolved
+      # custom script for AdGuardHome because we need to disable resolved
+      - run: |
+          cd adguardhome
+          docker-compose pull
+          systemctl disable systemd-resolved.service 
+          docker-compose up -d
+          docker-compose down
+          systemctl enable systemd-resolved.service
+        if: ${{ env.ACT == false }}
+      # test the rest of the containers
       - run: |
           docker-compose -f bazarr/docker-compose.yml up -d
           docker-compose -f code-server/docker-compose.yml up -d

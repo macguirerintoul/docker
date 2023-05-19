@@ -1,4 +1,3 @@
-version: "3.3"
 services:
   bazarr:
     image: lscr.io/linuxserver/bazarr
@@ -7,9 +6,9 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /var/containers/bazarr/config:/config
-      - /var/containers/media/movies:/movies
-      - /var/containers/media/tv:/tv
+      - /mnt/containers/bazarr/config:/config
+      - /mnt/containers/media/movies:/movies
+      - /mnt/containers/media/tv:/tv
     ports:
       - 3002:6767
     restart: unless-stopped

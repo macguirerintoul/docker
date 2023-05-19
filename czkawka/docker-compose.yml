@@ -1,14 +1,13 @@
-version: '3.3'
 services:
-    czkawka:
-        container_name: czkawka
-        restart: unless-stopped
-        ports:
-            - '5800:5800'
-        volumes:
-            - './config:/config:rw'
-            - '../photoprism/originals:/storage:rw'
-        image: jlesage/czkawka
-        environment:
-            - PUID=1000
-            - PGID=1000
+  czkawka:
+    image: jlesage/czkawka
+    container_name: czkawka
+    environment:
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - "5800:5800"
+    volumes:
+      - "/mnt/containers/czkawka/config:/config:rw"
+      - "/mnt/containers/photoprism/originals:/storage:rw"
+    restart: unless-stopped
