@@ -9,7 +9,7 @@ services:
       - "81:81"
     environment:
       # These are the settings to access your db
-      DB_MYSQL_HOST: "192.168.0.20"
+      DB_MYSQL_HOST: "npm-db"
       DB_MYSQL_PORT: 9230
       DB_MYSQL_USER: "npm"
       DB_MYSQL_PASSWORD: "npm"
