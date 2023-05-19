@@ -15,5 +15,5 @@ services:
       - 8853:8853/udp # dns-over-quic
     volumes:
       - /var/containers/adguardhome/data:/opt/adguardhome/work
-      - /var/containers/adguardhome/config:/opt/adguardhome/config
+      - /var/containers/adguardhome/config:/opt/adguardhome/conf
     restart: unless-stopped
