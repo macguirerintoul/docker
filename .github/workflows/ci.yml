@@ -17,9 +17,11 @@ jobs:
           cd adguardhome
           docker-compose pull
           sudo systemctl disable systemd-resolved.service 
+          sudo systemctl stop systemd-resolved.service 
           docker-compose up -d
           docker-compose down
           sudo systemctl enable systemd-resolved.service
+          sudo systemctl start systemd-resolved.service
         # don't do this when running locally with act because i can't find an ubuntu dind image
         if: ${{ env.ACT == false }}
       # test the rest of the containers
