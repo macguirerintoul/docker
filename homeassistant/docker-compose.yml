@@ -7,4 +7,4 @@ services:
     volumes:
       - /mnt/containers/homeassistant/config:/config
     network_mode: host
-    image: "ghcr.io/home-assistant/home-assistant:2023.5.3"
+    image: "ghcr.io/home-assistant/home-assistant:2023.5.4"
