@@ -1,6 +1,6 @@
 services:
   nginx:
-    image: nginx:1.25.1
+    image: nginx:1.25.2
     container_name: nginx
     ports:
       - "9300:80"
