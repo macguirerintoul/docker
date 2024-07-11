@@ -10,7 +10,7 @@ services:
 
   plausible_events_db:
     container_name: plausible-events-db
-    image: clickhouse/clickhouse-server:23.9-alpine
+    image: clickhouse/clickhouse-server:24.6-alpine
     restart: always
     volumes:
       - /mnt/containers/plausible/event-data:/var/lib/clickhouse
